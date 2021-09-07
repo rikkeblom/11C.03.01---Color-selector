@@ -7,7 +7,8 @@ document.querySelector(".colorPicker").addEventListener("input", newColor);
 function newColor() {
   const hexValue = document.querySelector(".colorPicker").value;
   const rbgValue = HEXtoRBG(hexValue);
-  const HSLvalue = RBGtoHSL(rbgValue);
+  const HSLValue = RBGtoHSL(rbgValue);
+  const CSSValue = RBGtoCSS(rbgValue);
 
   // console.log(`The chosen  color is: ${hexValue}`);
   // console.log(`The chosen RBG color is:`);
@@ -16,7 +17,7 @@ function newColor() {
   // console.log(HSLvalue);
 
   displayColor(hexValue);
-  displayColorValues(hexValue, rbgValue, HSLvalue);
+  displayColorValues(hexValue, CSSValue, HSLValue);
 }
 
 function HEXtoRBG(hex) {
@@ -41,6 +42,10 @@ function HEXtoRBG(hex) {
 
   // console.log(RBGvalue);
   return RBGvalue;
+}
+
+function RBGtoCSS(rbgvalue) {
+  return `rgb(${rbgvalue.r},${rbgvalue.g},${rbgvalue.b})`;
 }
 
 function RBGtoHEX(rbgvalue) {
@@ -118,6 +123,7 @@ function displayColorValues(HEX, RBG, HSL) {
   // console.log(RBG);
   // console.log(HSL);
   document.querySelector(".HEX-info span").textContent = HEX;
-  document.querySelector(".RBG-info span").textContent = `${RBG.r}, ${RBG.b}, ${RBG.g},`;
-  document.querySelector(".HSL-info span").textContent = `${HSL.h}, ${HSL.s}, ${HSL.l},`;
+  document.querySelector(".RBG-info span").textContent = RBG;
+  // document.querySelector(".RBG-info span").textContent = `${RBG.r}, ${RBG.b}, ${RBG.g},`;
+  document.querySelector(".HSL-info span").textContent = `${HSL.h}°, ${HSL.s}%, ${HSL.l}%`;
 }
