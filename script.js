@@ -1,8 +1,13 @@
 "use strict";
 
 //https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/color
-document.querySelector(".colorPicker").addEventListener("change", newColor);
-document.querySelector(".colorPicker").addEventListener("input", newColor);
+
+window.addEventListener("DOMContentLoaded", start);
+
+function start() {
+  document.querySelector(".colorPicker").addEventListener("change", newColor);
+  document.querySelector(".colorPicker").addEventListener("input", newColor);
+}
 
 function newColor() {
   const hexValue = document.querySelector(".colorPicker").value;
